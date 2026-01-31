@@ -10,6 +10,7 @@ import org.junit.Assert;
 public class GoogleHomePageSteps {
 
     private GoogleHomePage gPage;
+    private int suggetionsNumbers;
 
     public GoogleHomePageSteps(Hooks hooks){
         this.gPage= hooks.getGpage();
@@ -27,5 +28,16 @@ public class GoogleHomePageSteps {
        String actualTitle =gPage.pageTitle();
        Assert.assertEquals(expectedTitle,actualTitle);
 
+    }
+
+    @When("user search for {string}")
+    public void user_search_for(String keyword){
+        suggetionsNumbers=gPage.searachFunction(keyword);
+        System.out.println(suggetionsNumbers);
+    }
+
+    @Then("suggetion should contain {int} suggetion")
+    public void sugetion_should_contains(int count){
+        Assert.assertEquals(count,suggetionsNumbers);
     }
 }

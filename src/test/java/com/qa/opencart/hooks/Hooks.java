@@ -20,7 +20,8 @@ public class Hooks {
     }
 
     @After
-    public void tearDown(){
+    public void tearDown()  {
+
         driver.quit();
     }
 
